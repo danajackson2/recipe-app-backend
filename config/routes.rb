@@ -6,4 +6,5 @@ Rails.application.routes.draw do
   resources :recipes
   resources :users
   post '/signin', to: 'auth#create'
+  get '/persist', to: 'auth#show'
 end
