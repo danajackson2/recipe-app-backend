@@ -1,9 +1,13 @@
 class LikesController < ApplicationController
 
     def create
-        byebug
-        Like.create(like_params)
-        render json: {message: 'like created'}
+        like = Like.create(like_params)
+        render json: like
+    end
+
+    def destroy
+        Like.find(params[:id]).destroy
+        render json: {message: 'like destroyed'}
     end
 
     private

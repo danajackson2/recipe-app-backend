@@ -6,14 +6,16 @@ class AuthController < ApplicationController
         
         if user && user.authenticate(params[:password])
             token = encode_token({user_id: user.id})
-            render json: {username: user.username, user_id: user.id, token: token}
+            user_likes = Like.all.select{|like| like.user_id == user.id}
+            render json: {username: user.username, user_id: user.id, token: token, likes: user_likes}
         else
             render json: {error: 'User could not be found'}, status: 401
         end
     end
 
     def show #persist
-        render json: {username: @user.username, user_id: @user.id}
+        user_likes = Like.all.select{|like| like.user_id == @user.id}
+        render json: {username: @user.username, user_id: @user.id, likes: user_likes}
     end
 
 end

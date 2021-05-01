@@ -5,7 +5,8 @@ class UsersController < ApplicationController
         user = User.create(user_params)
         if user.valid?
             token = encode_token({user_id: user.id})
-            render json: {username: user.username, user_id: user.id, token: token}
+            user_likes = Likes.all.select{|like| like.user_id == user.id}
+            render json: {username: user.username, user_id: user.id, token: token, likes: user_likes}
         else
             render json: user.errors.messages, status: :not_acceptable
         end
