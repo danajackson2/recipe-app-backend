@@ -20,4 +20,15 @@ class RecipesController < ApplicationController
         render json: recipe_output
     end
 
+    def create
+      byebug
+      new_recipe = Recipe.create(name: params[:name], user_id: params[:user_id], 
+        instructions: params[:instructions], description: params[:description], 
+        img: params[:img])
+
+      params[:recipe_items].each do |item|
+        RecipeItem.create()
+      end
+    end
+
 end
