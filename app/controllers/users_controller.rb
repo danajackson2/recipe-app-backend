@@ -14,11 +14,35 @@ class UsersController < ApplicationController
 
     def show
         user = User.find(params[:id])
+        date_formatted_my_recipes = user.recipes.map{|r|
+            {
+                id: r.id,
+                name: r.name,
+                user_id: r.user_id,
+                instructions: r.instructions,
+                description: r.description,
+                img: r.img,
+                created_at: r.created_at.strftime('%y-%m-%d-%H-%M-%S'),
+                likes: r.likes.length
+            }
+        }
+        date_formatted_liked_recipes = user.likes.map{|like| like.recipe}.map{|r|
+            {
+                id: r.id,
+                name: r.name,
+                user_id: r.user_id,
+                instructions: r.instructions,
+                description: r.description,
+                img: r.img,
+                created_at: r.created_at.strftime('%y-%m-%d-%H-%M-%S'),
+                likes: r.likes.length
+            }
+        }
         render json: {
             id: user.id,
             username: user.username,
-            my_recipes: user.recipes,
-            liked_recipes: user.likes.map{|like| like.recipe}
+            my_recipes: date_formatted_my_recipes,
+            liked_recipes: date_formatted_liked_recipes
         }
     end
 
