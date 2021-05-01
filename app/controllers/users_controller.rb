@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-    skip_before_action :authorized, only: [:create]
+    skip_before_action :authorized, only: [:create, :show]
 
     def create
         user = User.create(user_params)
@@ -10,6 +10,16 @@ class UsersController < ApplicationController
         else
             render json: user.errors.messages, status: :not_acceptable
         end
+    end
+
+    def show
+        user = User.find(params[:id])
+        render json: {
+            id: user.id,
+            username: user.username,
+            my_recipes: user.recipes,
+            liked_recipes: user.likes.map{|like| like.recipe}
+        }
     end
 
     private
