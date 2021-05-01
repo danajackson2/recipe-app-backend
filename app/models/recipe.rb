@@ -3,5 +3,5 @@ class Recipe < ApplicationRecord
   has_many :recipe_items, dependent: :destroy
   has_many :ingredients, through: :recipe_items
   has_many :likes, dependent: :destroy
-  has_many :users, through: :likes
+  has_many :comments, dependent: :destroy
 end
