@@ -2,6 +2,7 @@ class RecipesController < ApplicationController
     skip_before_action :authorized, only: [:index]
 
     def index
+        byebug
         recipes = Recipe.all
         recipe_output = recipes.map do |rec| 
             comments = rec.comments.map{|c| {username: c.user.username, body: c.body, created_at: c.created_at}}
@@ -15,7 +16,8 @@ class RecipesController < ApplicationController
                 username: rec.user.username,
                 likes: rec.likes.length,
                 ingredients: ingredients,
-                comments: comments
+                comments: comments,
+                created_at: rec.created_at.strftime('%y-%m-%d')
             }
         end
         render json: recipe_output
