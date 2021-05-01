@@ -27,7 +27,9 @@ class RecipesController < ApplicationController
         img: params[:img])
 
       params[:recipe_items].each do |item|
-        RecipeItem.create()
+        thisIngredient = Ingredient.find_or_create_by(name: item[:name])
+        RecipeItem.create(quantity_type: item[:quantity_type], quantity: item[:quantity], 
+          recipe_id: new_recipe.id, ingredient_id: thisIngredient.id)
       end
     end
 
