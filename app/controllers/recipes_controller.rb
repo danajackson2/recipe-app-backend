@@ -8,12 +8,14 @@ class RecipesController < ApplicationController
             ingredients = rec.recipe_items.map{|i| {name: i.ingredient.name, quantity: i.quantity, quantity_type: i.quantity_type}}
             {
                 id: rec.id,
+                user_id: rec.user_id,
                 name: rec.name,
                 description: rec.description,
                 img: rec.img,
                 instructions: rec.instructions,
                 username: rec.user.username,
                 likes: rec.likes.length,
+                who_liked: rec.likes,
                 ingredients: ingredients,
                 comments: comments,
                 created_at: rec.created_at.strftime('%y-%m-%d-%H-%M-%S')
