@@ -1,24 +1,10 @@
-# README
+# Get Cookin'
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is an instagram like app, inspired by MLH's Hack at Home ii Hackathon, was built in 48 hours. The theme was to build an app to make quarantine life at home more enjoyable and full.
 
-Things you may want to cover:
+Check out Get Cookin' [here](http://getcookin.herokuapp.com) and a demo video can be seen [here](https://youtu.be/_qEbfMJCyGY)!
 
-* Ruby version
+Built by:
+Dana Jackson - [github](github.com/danajackson2) - [linkedin](https://www.linkedin.com/in/danajackson2/) - [email](danajackson2@gmail.com)
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Ben Swanson - [github](github.com/bswan0002) - [linkedin](https://www.linkedin.com/in/bswan0002/) - [email](bswan0002@gmail.com)
